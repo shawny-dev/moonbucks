@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://0.0.0.0:3306/moonbucks?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    password: asdf
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
