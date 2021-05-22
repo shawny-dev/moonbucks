@@ -1,5 +1,6 @@
 package io.moonbucks.api.controller
 
+import io.moonbucks.api.dto.member.MemberDto
 import io.moonbucks.api.entity.member.Member
 import io.moonbucks.api.service.member.MemberService
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,7 +16,7 @@ class MemberController {
     lateinit var memberService: MemberService
 
     @GetMapping("/api/v1/members/{uuid}")
-    fun getMember(@PathVariable uuid: String): Member {
+    fun getMember(@PathVariable uuid: String): MemberDto {
         return memberService.getMember(uuid)
     }
 }

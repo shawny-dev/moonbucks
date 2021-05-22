@@ -4,7 +4,7 @@ import io.moonbucks.api.dto.member.MemberDto
 import io.moonbucks.api.entity.member.Member
 import org.mapstruct.Mapper
 
-@Mapper
+@Mapper(componentModel = "spring")
 interface MemberMapper {
 
     fun toMemberDto(member: Member) : MemberDto

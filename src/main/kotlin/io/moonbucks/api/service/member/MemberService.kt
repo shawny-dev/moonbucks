@@ -1,5 +1,6 @@
 package io.moonbucks.api.service.member
 
+import io.moonbucks.api.dto.mapper.MemberMapper
 import io.moonbucks.api.dto.member.MemberDto
 import io.moonbucks.api.entity.member.Member
 import io.moonbucks.api.repository.member.MemberRepository
@@ -12,8 +13,11 @@ class MemberService {
     @Autowired
     lateinit var memberRepository: MemberRepository
 
+    @Autowired
+    lateinit var memberMapper: MemberMapper
+
     fun getMember(uuid: String): MemberDto {
         var member: Member = memberRepository.findByUuid(uuid)
-        return MemberDto(member)
+        return memberMapper.toMemberDto(member)
     }
 }
