@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 // DAO
 @Repository
 interface MemberRepository : CrudRepository<Member, Long> {
-    fun findByUuid(uuid: String) : Member
+    fun findByUuid(uuid: String) : Member?
 }

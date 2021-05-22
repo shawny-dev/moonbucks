@@ -27,24 +27,23 @@ class AuthInterceptor : HandlerInterceptor {
             throw BadRequest()
         }
 
-        val decodedJwt = JWT.decode(bearerToken)
-        if (!decodedJwt.claims.containsKey("access_key")) {
-            throw NoAccessKey()
-        }
-
-        val apiToken = apiTokenRepository.findByAccessKey(decodedJwt.claims["access_key"]!!.asString()) ?: throw InvalidAccessKey()
-        if (apiToken.hasExpired()) {
-            throw ExpiredAccessKey()
-        }
-
-        try {
-            JWT.require(Algorithm.HMAC256(apiToken.secretKey)).build().verify(bearerToken)
-        } catch (e: SignatureVerificationException) {
-            throw JwtVerification()
-        }
-
-        // TODO - nonce, disabled, scope 확인
-        setCurrentUser(memberRepository.findById(apiToken.memberId).get())
+//        val decodedJwt = JWT.decode(bearerToken)
+//        if (!decodedJwt.claims.containsKey("access_key")) {
+//            throw NoAccessKey()
+//        }
+//
+//        val apiToken = apiTokenRepository.findByAccessKey(decodedJwt.claims["access_key"]!!.asString()) ?: throw InvalidAccessKey()
+//        if (apiToken.hasExpired()) {
+//            throw ExpiredAccessKey()
+//        }
+//
+//        try {
+//            JWT.require(Algorithm.HMAC256(apiToken.secretKey)).build().verify(bearerToken)
+//        } catch (e: SignatureVerificationException) {
+//            throw JwtVerification()
+//        }
+//
+//        setCurrentUser(memberRepository.findById(apiToken.memberId).get())
         return true
     }
 

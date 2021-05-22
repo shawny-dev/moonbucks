@@ -8,6 +8,7 @@ data class MemberDto(
     val uuid: String? = "",
     val type: String? = "",
     val activated: Boolean? = false,
+    val password: String? = "",
     var displayName: String? = "",
     var email: String? = "",
     val state: String? = "",

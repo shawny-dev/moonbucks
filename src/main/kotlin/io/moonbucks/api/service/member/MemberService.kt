@@ -16,8 +16,12 @@ class MemberService {
     @Autowired
     lateinit var memberMapper: MemberMapper
 
-    fun getMember(uuid: String): MemberDto {
-        var member: Member = memberRepository.findByUuid(uuid)
+    fun getMember(id: Long): MemberDto {
+        val member: Member = memberRepository.findById(id).get()
         return memberMapper.toMemberDto(member)
+    }
+
+    fun setMember(memberDto: MemberDto): Member {
+        return memberRepository.save(memberMapper.toIndividualMember(memberDto))
     }
 }
