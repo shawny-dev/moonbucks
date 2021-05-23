@@ -4,9 +4,9 @@ import io.moonbucks.api.entity.member.Member
 import java.util.*
 
 data class MemberDto(
-    val id: Long? = 0,
-    val uuid: String? = "",
-    val type: String? = "",
+    val id: Long?,
+    val uuid: String = UUID.randomUUID().toString(),
+    val type: String?,
     val activated: Boolean? = false,
     val password: String? = "",
     var displayName: String? = "",
