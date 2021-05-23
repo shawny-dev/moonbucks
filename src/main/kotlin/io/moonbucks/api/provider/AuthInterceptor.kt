@@ -24,7 +24,7 @@ class AuthInterceptor : HandlerInterceptor {
     override fun preHandle(req: HttpServletRequest, res: HttpServletResponse, handler: Any): Boolean {
         val bearerToken = req.getHeader("Authorization")?.replace("Bearer ", "")
         if (bearerToken.isNullOrEmpty()) {
-            throw BadRequest()
+            throw NoAuthorizationToken()
         }
 
 //        val decodedJwt = JWT.decode(bearerToken)

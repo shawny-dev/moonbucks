@@ -8,6 +8,6 @@ import org.mapstruct.Mapper
 @Mapper(componentModel = "spring")
 interface MemberMapper {
 
-    fun toMemberDto(member: Member) : MemberDto
+    fun toMemberDto(member: Member?) : MemberDto
     fun toIndividualMember(memberDto: MemberDto) : IndividualMember
 }
